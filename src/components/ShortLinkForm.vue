@@ -56,7 +56,7 @@ async function submitForm() {
     </div>
 
     <div class="field">
-      <label for="custom-code">自訂短碼 <span>選填</span></label>
+      <label for="custom-code">自訂短碼 <span>(選填)</span></label>
       <input
         id="custom-code"
         ref="customCodeInput"

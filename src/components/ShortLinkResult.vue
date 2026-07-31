@@ -34,7 +34,6 @@ onBeforeUnmount(() => clearTimeout(resetTimer))
         <p class="eyebrow">建立完成</p>
         <h2 id="result-title">你的短網址已準備好</h2>
       </div>
-      <span class="status-badge">可立即使用</span>
     </div>
 
     <div class="short-url-row">
