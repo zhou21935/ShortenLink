@@ -86,3 +86,9 @@ test('resolve uses one atomic parameterized update', async () => {
   assert.match(calls[0][0], /click_count = click_count \+ 1/)
   assert.deepEqual(calls[0][1], [item.shortCode])
 })
+
+test('database readiness has fixed safe responses', async () => {
+  assert.deepEqual((await request(createApp({ service: stub(), healthCheck: async () => {} })).get('/api/health')).body, { status: 'ok' })
+  const failed = await request(createApp({ service: stub(), healthCheck: async () => { throw new Error('SELECT password host') } })).get('/api/health')
+  assert.equal(failed.status, 503); assert.deepEqual(failed.body, { status: 'unavailable' }); assert.doesNotMatch(failed.text, /SELECT|password|host/)
+})
