@@ -1,24 +1,29 @@
 {
-  "name": "shortenlink",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run && npm --prefix server test",
-    "test:frontend": "vitest run",
-    "test:server": "npm --prefix server test"
-  },
-  "dependencies": {
-    "vue": "^3.5.40"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.8",
-    "@vue/test-utils": "^2.4.11",
-    "jsdom": "^30.0.1",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
-  }
+    "name":  "shortenlink",
+    "private":  true,
+    "version":  "0.0.0",
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "vite",
+                    "build":  "vite build",
+                    "preview":  "vite preview",
+                    "test":  "vitest run \u0026\u0026 npm --prefix server test",
+                    "test:frontend":  "vitest run",
+                    "test:server":  "npm --prefix server test",
+                    "dev:all":  "concurrently \"npm run dev\" \"npm --prefix server run dev\"",
+                    "db:migrate":  "npm --prefix server run db:migrate",
+                    "start:production":  "cross-env NODE_ENV=production npm --prefix server start"
+                },
+    "dependencies":  {
+                         "vue":  "^3.5.40"
+                     },
+    "devDependencies":  {
+                            "@vitejs/plugin-vue":  "^6.0.8",
+                            "@vue/test-utils":  "^2.4.11",
+                            "jsdom":  "^30.0.1",
+                            "vite":  "^8.2.0",
+                            "vitest":  "^4.1.10",
+                            "concurrently":  "^9.2.1",
+                            "cross-env":  "^10.1.0"
+                        }
 }
