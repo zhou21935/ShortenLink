@@ -46,7 +46,7 @@ Production 使用單一 origin，避免額外的 CORS 與前後端網址設定�
 
 ## 本機啟動
 
-需求：Node.js 20+、可連線的 PostgreSQL 資料庫。
+需求：Node.js 24+、可連線的 PostgreSQL 資料庫。
 
 ```powershell
 npm install
