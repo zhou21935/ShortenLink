@@ -9,14 +9,25 @@ const pending = ref(false)
 const result = ref(null)
 const requestError = ref('')
 
+const ERROR_MESSAGES = {
+  SHORT_CODE_CONFLICT: '此短碼已被使用，請換一組',
+  INVALID_ORIGINAL_URL: '請重新檢查原始網址',
+  INVALID_SHORT_CODE: '請重新檢查自訂短碼',
+  SHORT_CODE_GENERATION_FAILED: '目前無法產生短碼，請稍後再試',
+}
+
+function getRequestError(error) {
+  return ERROR_MESSAGES[error?.code] || '目前無法建立短網址，請稍後再試'
+}
+
 async function handleSubmit(payload) {
   if (pending.value) return
   pending.value = true
   requestError.value = ''
   try {
     result.value = await props.createLink(payload)
-  } catch {
-    requestError.value = '目前無法建立短網址，請稍後再試'
+  } catch (error) {
+    requestError.value = getRequestError(error)
   } finally {
     pending.value = false
   }
