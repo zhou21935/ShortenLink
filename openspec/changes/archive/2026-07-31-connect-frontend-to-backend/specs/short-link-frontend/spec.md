@@ -1,4 +1,4 @@
-﻿## ADDED Requirements
+## ADDED Requirements
 
 ### Requirement: Backend creation error feedback
 The frontend MUST map stable backend creation error codes to safe, actionable Traditional Chinese feedback and MUST restore the submission control after every failed request.
@@ -14,18 +14,6 @@ The frontend MUST map stable backend creation error codes to safe, actionable Tr
 #### Scenario: Network or unknown failure
 - **WHEN** the request cannot reach the backend or the response does not contain a recognized error contract
 - **THEN** the frontend displays `目前無法建立短網址，請稍後再試`, restores the submit control, and does not expose raw response or stack details
-
-## REMOVED Requirements
-
-### Requirement: Mock creation lifecycle
-**Reason**: The completed backend now provides persistent short-link creation, so fixed mock results no longer represent the product behavior.
-**Migration**: Use the real backend creation lifecycle defined below through `POST /api/short-links`.
-
-#### Scenario: Replace fixed mock results
-- **WHEN** the frontend is upgraded to this capability
-- **THEN** it no longer returns the fixed mock code `q7X2k9P` and uses the backend response instead
-
-## ADDED Requirements
 
 ### Requirement: Backend creation lifecycle
 The frontend SHALL submit valid form values to `POST /api/short-links`, SHALL prevent duplicate submissions while the request is pending, and SHALL render the successful backend result without substituting mock values.
@@ -45,3 +33,13 @@ The frontend SHALL submit valid form values to `POST /api/short-links`, SHALL pr
 #### Scenario: Validation blocks backend creation
 - **WHEN** either field contains an invalid value and the visitor submits the form
 - **THEN** the frontend does not call the creation adapter and focuses the first invalid field
+
+## REMOVED Requirements
+
+### Requirement: Mock creation lifecycle
+**Reason**: The completed backend now provides persistent short-link creation, so fixed mock results no longer represent the product behavior.
+**Migration**: Use the real backend creation lifecycle defined above through `POST /api/short-links`.
+
+#### Scenario: Replace fixed mock results
+- **WHEN** the frontend is upgraded to this capability
+- **THEN** it no longer returns the fixed mock code `q7X2k9P` and uses the backend response instead
